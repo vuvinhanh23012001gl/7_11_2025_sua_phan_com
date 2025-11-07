@@ -1,0 +1,6 @@
+../App/Src/mErrorHandle.c:19:6:eqStatusPause	1
+../App/Src/mErrorHandle.c:28:6:eqStatusStop	1
+../App/Src/mErrorHandle.c:35:6:eqStatusNormal	1
+../App/Src/mErrorHandle.c:39:6:eqStatusErrorHandle	1
+../App/Src/mErrorHandle.c:43:6:eqStatusMonitor	4
+../App/Src/mErrorHandle.c:54:6:eqHandleStatus	1

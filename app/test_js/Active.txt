@@ -1,0 +1,13 @@
+Active:
+
+sensor_safety:0
+btn_stop:0
+
+sensor_right:1
+sensor_left:1
+
+btn_start:1
+btn_reset:1
+
+
+

@@ -1,0 +1,13 @@
+../Core/Src/main.c:369:13:MX_TIM4_Init	32	static,ignoring_inline_asm
+../Core/Src/main.c:414:13:MX_TIM7_Init	16	static,ignoring_inline_asm
+../Core/Src/main.c:294:13:MX_TIM1_Init	104	static,ignoring_inline_asm
+../Core/Src/main.c:659:6:StartTaskFlow	8	static
+../Core/Src/main.c:701:6:StartTaskIAIX	8	static
+../Core/Src/main.c:765:6:StartTaskIAIY	8	static
+../Core/Src/main.c:793:6:StartTaskIAIZ	8	static
+../Core/Src/main.c:681:6:StartTaskGPIO	8	static
+../Core/Src/main.c:728:6:StartTaskCOM	8	static
+../Core/Src/main.c:820:6:StartTaskIAI	8	static
+../Core/Src/main.c:248:6:SystemClock_Config	88	static,ignoring_inline_asm
+../Core/Src/main.c:135:5:main	64	static
+../Core/Src/main.c:842:6:Error_Handler	0	static,ignoring_inline_asm

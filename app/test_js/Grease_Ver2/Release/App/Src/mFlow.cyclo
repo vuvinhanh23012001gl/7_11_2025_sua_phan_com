@@ -1,0 +1,4 @@
+../App/Src/mFlow.c:19:6:eqControl	1
+../App/Src/mFlow.c:23:6:eqModeORG	1
+../App/Src/mFlow.c:28:6:eqModeMove	1
+../App/Src/mFlow.c:32:6:eqModeAuto	1

@@ -1,0 +1,9 @@
+../App/Src/mIAI.c:22:6:IAI_Move	11
+../App/Src/mIAI.c:66:6:IAI_Home	7
+../App/Src/mIAI.c:84:6:IAI_Pause	1
+../App/Src/mIAI.c:89:6:IAI_Continues	1
+../App/Src/mIAI.c:94:6:IAI_Stop	1
+../App/Src/mIAI.c:99:6:IAI_Prepare	4
+../App/Src/mIAI.c:111:6:IAI_Clear	1
+../App/Src/mIAI.c:121:6:IAI_ClearError	4
+../App/Src/mIAI.c:135:6:IAIMovingHandled	24

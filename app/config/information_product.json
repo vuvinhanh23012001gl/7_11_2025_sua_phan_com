@@ -1,0 +1,15 @@
+{
+    "name": "Hệ thống nhận diện điểm dầu",
+    "version": "v1.0",
+    "author": "Nhóm phần mềm RD-PE công ty Brother Việt Nam",
+    "path_log_img_oil": "C:\\Users\\anhuv\\Desktop\\push git\\app\\static\\Product_Img_Retraining",
+    "path_log_product": "C:\\Users\\anhuv\\Desktop\\push git\\app\\static\\log\\log_product",
+    "path_log_software": "C:\\Users\\anhuv\\Desktop\\push git\\app\\static\\log\\log_software",
+    "open_log_img_oil": false,
+    "open_log_product": false,
+    "open_log_software": false,
+    "open_log_console": false,
+    "set_time_save_log_software": 30,
+    "set_time_save_log_img": 30,
+    "set_time_save_log_excell": 30
+}

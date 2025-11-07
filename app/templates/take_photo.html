@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=0.75">
+    <title>Train</title>
+    <link rel="stylesheet" href="../static/css/style_take_photo.css">
+    <link rel="icon" type="image/png" href="../static/img/image.png">
+    <script src="https://cdn.socket.io/4.5.4/socket.io.min.js"></script>
+</head>
+<body>
+    <div class = "header-show">
+        <h1 class="header-show-name">🛠️Training mô hình AI cho loại sản phẩm mới </h1>
+        <div class="header-show-item-conect">
+            <p id="header-show-circle"></p>    
+            <h2  id="header-show-status">Chờ kết nối....</h2>
+        </div>
+    </div>
+    <main class="function-container">
+            <div class="function-container-item list-product">
+                        <h3>📋Danh sách sản phẩm</h3>
+                        <ul id = "device-list" class="list-product-item">
+                            <!-- them js o day -->
+                        </ul>
+                        <form method="POST" action="/api_new_model/submit">
+                            <h4>➕ Thêm loại thiết bị mới</h4>
+                            <div class="condition add-deceive">
+                                <input class = "number" type="number" class="form-control" name="deviceId" placeholder="ID thiết bị " required> 
+                                <input class = "number"type="text" class="form-control" name="deviceName" placeholder="Tên thiết bị" required>
+                                <input class = "number" type="number" class="form-control" name="number_trainings" placeholder="Số lần chụp lấy mẫu" required> 
+                            </div>
+                            <div class="condition move">
+                                <input class = "number" type="number" class="input_move" name = "shif_x" placeholder="Di chuyển theo trục x">
+                                <input class = "number" type="number" class="input_move" name = "shif_y" placeholder="Di chuyển theo trục y">
+                                <input class = "number"type="number" class="input_move" name = "shif_z" placeholder="Di chuyển theo trục z">
+                            </div>
+                            <div id = "box-limmit">
+                                <input  type="number" class="number input_move limit" name = "limit_x" placeholder="Giới hạn X" required>
+                                <input  type="number" class="number input_move limit" name = "limit_y" placeholder="Giới hạn Y"required>
+                                <input  type="number" class="number input_move limit" name = "limit_z" placeholder="Giới hạn Z"required>
+                                <input  type="number" class="number input_move limit" name = "limit_k" placeholder="Giới hạn ánh sáng K"required>
+                                <button class="btn btn-primary"  id = "btn_save_limit">Lưu giới hạn</button>
+                            </div>
+                                <h5 id="points-oil">📍 Các điểm dầu</h5>
+                                <div id="pointsContainer"></div> <!-- Container để thêm nhóm ô nhập -->
+                                <button type="button" class="btn btn-secondary my-2" onclick="addPoint()">➕ Thêm điểm dầu</button><br>
+                                <button type="submit" class="btn btn-primary">💾 Lưu loại thiết bị</button>
+                        </form>
+                        <button type="button" class="btn btn-primary my-2" id="btn-exit" onclick="showExitModal()">❌ Thoát quá trình training</button>
+                        <div id="exit-modal" class="modal-overlay" style="display: none;">
+                            <div class="modal-content">
+                                <p>Bạn có chắc chắn muốn thoát quá trình training?</p>
+                                <button type="button" id="confirm-exit" class="btn btn-danger" style="white-space: nowrap; padding: 7px;" onclick="confirmExit()">Đồng ý thoát</button>
+                                <button type="button" class="btn btn-secondary" id="cancel-exit" onclick="hideExitModal()">Không</button>
+                            </div>
+                        </div>
+            </div>
+        </div>
+        <div class="function-container-item list-show-product">
+                <h3 class="list-show-product-text ">🎥 Hình ảnh camera</h3>
+                <img alt="Mô tả ảnh" id="cam_feed">  
+                <div class="btn_inc_dec">
+                        <button>➕Tăng X</button>
+                        <button>➖Giảm X</button>
+                        <button>➕Tăng Y</button>
+                        <button>➖Giảm Y</button>
+                        <button>➕Tăng Z</button>
+                        <button>➖Giảm Z</button>
+                        <button>➕Tăng K</button>
+                        <button>➖Giảm K</button>
+                        <button type="button" id ="case_specail" onclick="sendAllPoints()">▶️Run</button>
+                        <button id ="replay-run">🔁Replay</button>
+        
+                </div>
+                    <label for="infoBox">📋 Thông tin loại sản phẩm hiện có</label>
+                    <textarea id="infoBox" readonly ></textarea>
+        </div>
+                <div class="function-container-item list-show-log">
+                    <p id="summaryBox-text">📋 Tiến trình train data</p>
+                    <textarea id="summaryBox" class="form-control" rows="22" readonly placeholder="Sẽ hiển thị khi thêm..."></textarea>
+                </div>
+    </main>
+    <footer>
+    </footer>
+</body>
+<script src="../static/js/take_photo.js"></script>
+</html>

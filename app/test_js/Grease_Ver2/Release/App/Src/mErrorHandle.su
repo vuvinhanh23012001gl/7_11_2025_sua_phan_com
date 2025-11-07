@@ -1,0 +1,6 @@
+../App/Src/mErrorHandle.c:19:6:eqStatusPause	8	static
+../App/Src/mErrorHandle.c:28:6:eqStatusStop	0	static
+../App/Src/mErrorHandle.c:35:6:eqStatusNormal	0	static
+../App/Src/mErrorHandle.c:39:6:eqStatusErrorHandle	0	static
+../App/Src/mErrorHandle.c:43:6:eqStatusMonitor	8	static
+../App/Src/mErrorHandle.c:54:6:eqHandleStatus	0	static
