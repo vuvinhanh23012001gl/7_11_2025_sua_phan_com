@@ -1,10 +1,13 @@
 MODE_WAIT_CONNECT = 0
 MODE_CONECT =  1
 MODE_AUTO =  2
-
+import threading
 import random
+import queue
+import time
 class Manager_STM32:
     def __init__(self):
+        
           self.led_out_red = None
           self.led_out_blue = None
           self.led_out_yellow = None
@@ -16,7 +19,10 @@ class Manager_STM32:
           self.sensor_safety = None
           self.sensor_left_distance = None 
           self.sensor_right_distance = None
-
+          
+          self.allow_open_thread = False
+          self.thread  =  None
+          
         # ====== SET ======
     def set_led_out_red(self, value): self.led_out_red = value
     def set_led_out_blue(self, value): self.led_out_blue = value
@@ -44,6 +50,7 @@ class Manager_STM32:
     def get_sensor_safety(self): return self.sensor_safety
     def get_sensor_left_distance(self): return self.sensor_left_distance
     def get_sensor_right_distance(self): return self.sensor_right_distance
+    
     
     def update_status_from_string(self,data: str):
         """
@@ -79,7 +86,7 @@ class Manager_STM32:
 
         except Exception as e:
             print("❌ Lỗi khi parse chuỗi:", e)
-    def check_stop(self):
+  
         
     
 
@@ -162,16 +169,53 @@ class Manager_STM32:
                 self.led_out_btn_reset = btn_reset
             if buzzer is not None:
                 self.buzzer_ou = buzzer
+                
+    
+    def thread_handl_request_stm32(self):
+        self.allow_open_thread = True        
+        self.thread = threading.Thread(target=self._handler_request_stm32,daemon=True, name="check_connect_com")
+        self.thread.start()
+
+    def _handler_request_stm32(self):
+        # thread nay chi gui respon ,cap nhat trang thai thoi.chu ko duoc lam gi them no giong ham mfllow
+        while self.allow_open_thread:
+            print("xin chao ban")
+            time.sleep(2)
+    
+    def stop_thread_handler_stm32(self):
+        self.allow_open_thread = False
+        if self.thread is not None and self.thread.is_alive():
+            self.thread.join(timeout=2)
+            print("✅ Thread STM32 Handl đã được dừng và giải phóng")
+
+    def set_allow_open_thread(self,open):
+        self.allow_open_thread  = open
+        
+    def get_allow_open_thread(self):
+        return self.allow_open_thread
+        
+        
 
 
+queue_stm32_transmit =  queue.Queue(maxsize = 50)
+queue_stm32_transmit.put("status_all:1,0,1,1,0,0,1,0,0,1,1",block=False,timeout=1)
 
+queue_stm32_send =  queue.Queue(maxsize = 50)
+queue_stm32_send.put("status_all:1,0,1,1,0,0,1,0,0,1,1",block=False,timeout=1)
 
-# def emergency_stop(self):
 stm32 = Manager_STM32()
+stm32.thread_handl_request_stm32()
 
-stm32.update_status_from_string("status_all:1,0,1,1,0,0,1,0,0,1,1")
-stm32.show_all()
 
+
+
+try:
+    while True:
+        pass
+        time.sleep(2)
+except KeyboardInterrupt:
+    print("Stop bằng Ctrl + C")
+    stm32.stop_thread_handler_stm32()
         
          
     
